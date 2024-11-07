@@ -14,10 +14,12 @@ public class TimeFormat {
 		int minutes = Integer.parseInt("" + args[0].charAt(3) + args[0].charAt(4));
 		boolean isPm = hours > 12;
 
-		if (isPm) System.out.printf("%01d:%02d PM%n", hours, minutes);
+		if (isPm && hours != 12) System.out.printf("%01d:%02d PM%n", hours - 12, minutes);
 
-		else if(!isPm) System.out.printf("%01d:%02d PM%n", hours, minutes);
+		else if(!isPm && hours != 12) System.out.printf("%01d:%02d AM%n", hours, minutes);
 
 		else if(hours == 0) System.out.printf("%01d:%02d AM%n", hours, minutes);
+
+		else if(hours == 12) System.out.printf("%01d:%02d PM%n", hours, minutes);
 	}
 }
